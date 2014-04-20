@@ -769,13 +769,7 @@ module.exports = (function() {
     function peg$parseEOL() {
       var s0;
 
-      if (input.charCodeAt(peg$currPos) === 10) {
-        s0 = peg$c23;
-        peg$currPos++;
-      } else {
-        s0 = peg$FAILED;
-        if (peg$silentFails === 0) { peg$fail(peg$c24); }
-      }
+      s0 = peg$parseLF();
       if (s0 === peg$FAILED) {
         s0 = peg$parseEOF();
       }

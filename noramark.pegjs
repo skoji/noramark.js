@@ -35,6 +35,7 @@ Paragraphs
 Paragraph
   = !ParagraphDelimiter dl:DocumentLine 
     { return "<p>" + dl + "</p>"; }
+
 DocumentLine
   = l:Character+ &EOL
     { return l.join(''); }
@@ -55,6 +56,6 @@ LF
 SPC
   = [ \t]
 EOL
-  = "\n" / EOF
+  = LF / EOF
 EOF
   = !.
