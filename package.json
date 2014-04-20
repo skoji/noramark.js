@@ -1,0 +1,14 @@
+{
+  "name": "noramark",
+  "version": "0.0.1",
+  "description": "NoraMark makup language port for JavaScript",
+  "devDependencies": {
+    "pegjs": "~0.8.0",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-peg": "^1.3.0"
+  },
+  "author": "Satoshi Kojima"
+}
