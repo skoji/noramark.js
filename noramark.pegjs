@@ -2,7 +2,7 @@ start
   = Document
 
 Document
-  = EmptyLine* blocks:Block* { return blocks.join("\n"); }
+  = EmptyLine* blocks:Block* { return '<html><body>' + blocks.join("\n") + '</body></html>';}
 
 Block
   = b:(ExplicitBlock / ParagraphGroup) EmptyLine*

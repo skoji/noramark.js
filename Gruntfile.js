@@ -3,11 +3,23 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     peg: {
-        example: {
-            src: "noramark.pegjs",
-            dest: "noramark.js"
-        }
+      noramark: {
+        src: "noramark.pegjs",
+        dest: "noramark.js",
+        options: { cache: true }
+      }
     },
+
+    simplemocha: {
+      options: {
+        timeout: 3000,
+        ignoreLeaks: false,
+        ui: 'bdd',
+        reporter: 'spec'
+      },
+      all: { src: ['test/*.js'] }
+    },
+
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -21,6 +33,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-peg');
-  grunt.registerTask('default', ['peg', 'uglify']);
+  grunt.loadNpmTasks('grunt-simple-mocha');
+  grunt.registerTask('default', ['peg', 'simplemocha', 'uglify']);
 
 };
