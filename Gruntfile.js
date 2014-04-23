@@ -3,13 +3,12 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     peg: {
-      noramark: {
-        src: "noramark.pegjs",
-        dest: "noramark.js",
+      parser: {
+        src: "lib/parser.pegjs",
+        dest: "lib/parser.js",
         options: { cache: true }
       }
     },
-
     simplemocha: {
       options: {
         timeout: 3000,
@@ -25,7 +24,7 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: '<%= pkg.name %>.js',
+        src: 'lib/<%= pkg.name %>.js',
         dest: 'build/<%= pkg.name %>.min.js'
       }
     }

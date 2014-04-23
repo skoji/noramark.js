@@ -5,25 +5,27 @@ module.exports = (function() {
     return '[' + name + '=' + attr + ']';
   }
   function cToS(cls){
-      if (!cls)
-        return '';
-      return cls.split(' ').reduce(function(prev, current) {
-        return prev + '.' + current.trim();
-      }, '');
-    }
-    function idToS(ids){
-      if (!ids)
-        return '';
-      return ids.split(' ').reduce(function(prev, current) {
-        return prev + '#' + current.trim();
-      }, '');
-    }
+    if (!cls)
+      return '';
+    return cls.split(' ').reduce(function(prev, current) {
+      return prev + '.' + current.trim();
+    }, '');
+  }
+  function idToS(ids){
+    if (!ids)
+      return '';
+    return ids.split(' ').reduce(function(prev, current) {
+      return prev + '#' + current.trim();
+    }, '');
+  }
+
   return {
     toA: function toA(raw_node) {
       if (raw_node.type == 'tag') {
         return [ raw_node.name +
                  cToS(raw_node.attribs['class']) +
-                 idToS(raw_node.attribs.id)].concat(
+                 idToS(raw_node.attribs.id) 
+               ].concat(
                    raw_node.children.map(function(elem) {
                      return toA(elem);
                    }).filter(function(elem) {

@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var noraParser = require('../noramark.js');
+var noraParser = require('../lib/noramark.js');
 var cheerio = require('cheerio');
 var xmlHelper = require('./xml_helper.js');
 
