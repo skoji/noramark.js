@@ -1,5 +1,10 @@
 module.exports = (function() {
-    function cToS(cls){
+  function attrToS(name, attr) {
+    if (!attr)
+      return '';
+    return '[' + name + '=' + attr + ']';
+  }
+  function cToS(cls){
       if (!cls)
         return '';
       return cls.split(' ').reduce(function(prev, current) {
