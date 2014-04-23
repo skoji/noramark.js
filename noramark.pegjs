@@ -8,15 +8,16 @@ Block
   = b:(ExplicitBlock / ParagraphGroup) EmptyLine*
     { return b; }
 ExplicitBlockHead 	
-  = SPC* name:Word SPC* '{' SPC* { return name; }
+  = _ name:Word _ '{' _ LF
+    { return name; } 
 ExplicitBlockEnd
-  = SPC* '}' 
+  = _ '}' EOL
 
 ExplicitBlock
-  = head:ExplicitBlockHead LF
+  = head:ExplicitBlockHead
     content:Block*
     EmptyLine*
-    ExplicitBlockEnd EOL
+    ExplicitBlockEnd 
 	{ return "<" + head + ">\n" + content.join("") + "\n</" + head + ">"; }
 
 ParagraphGroup
@@ -50,9 +51,12 @@ Character
   = !LF c:.
     { return c; } 
 EmptyLine
-  = LF SPC* EOL / SPC* LF
+  = LF _ EOL / _ LF
 LF
   = "\n"
+
+_ = SPC*
+
 SPC
   = [ \t]
 EOL
