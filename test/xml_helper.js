@@ -18,12 +18,12 @@ module.exports = (function() {
       if (raw_node.type == 'tag') {
         return [ raw_node.name +
                  cToS(raw_node.attribs['class']) +
-                 idToS(raw_node.attribs.id),
-                 raw_node.children.map(function(elem) {
-                   return toA(elem);
-                 }).filter(function(elem) {
-                   return elem;
-                 })];
+                 idToS(raw_node.attribs.id)].concat(
+                   raw_node.children.map(function(elem) {
+                     return toA(elem);
+                   }).filter(function(elem) {
+                     return elem;
+                   }));
       } else if (raw_node.type == 'text') {
         if (raw_node.data.trim()) {
           return raw_node.data;
