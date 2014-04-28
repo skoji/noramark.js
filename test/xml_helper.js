@@ -23,8 +23,8 @@ module.exports = (function() {
     toA: function toA(raw_node) {
       if (raw_node.type == 'tag') {
         return [ raw_node.name +
-                 cToS(raw_node.attribs['class']) +
-                 idToS(raw_node.attribs.id) 
+                 idToS(raw_node.attribs.id) +
+                 cToS(raw_node.attribs['class'])
                ].concat(
                    raw_node.children.map(function(elem) {
                      return toA(elem);
